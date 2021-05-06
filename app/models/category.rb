@@ -1,6 +1,8 @@
 class Category < ApplicationRecord
   @@all_categories = nil
 
+  has_many :articles
+
   validates :name, presence: true, uniqueness: true
 
   validates :priority, presence: true
