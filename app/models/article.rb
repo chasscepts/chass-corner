@@ -3,6 +3,11 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :votes, dependent: :destroy
 
-  scope :in_category, ->(category) { where(category: category) }
-  scope :latest, -> { order('order by created_at desc') }
+  scope :latest_in_categories, -> { select('DISTINCT ON (category_id) *').order("category_id, created_at DESC") }
+  scope :most_voted, -> { order('votes_count').last }
+
+  validates :category_id, presence: true
+  validates :author_id, presence: true
+  validates :title, presence: true, length: { minimum: 10 }
+  validates :text, presence: true, length: { minimum: 50 }
 end

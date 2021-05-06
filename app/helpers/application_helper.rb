@@ -21,7 +21,7 @@ module ApplicationHelper
           link_to 'New Article', new_article_path
         }
         #{
-          link_to 'Sign out', destroy_session_path
+          link_to 'Sign out', session_path(user), method: :destroy
         }".html_safe
       end
     end
