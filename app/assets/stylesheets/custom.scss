@@ -24,6 +24,10 @@ a {
   justify-content: space-between;
 }
 
+.justify-content-end {
+  justify-content: flex-end;
+}
+
 .align-items-center {
   align-items: center;
 }
@@ -33,9 +37,53 @@ a {
 }
 
 .page-header {
-  padding: 10px 20px;
+  padding: 20px;
+  border-bottom: 3px solid gray;
   .logo {
     margin: 0;
     font-size: 1.4rem;
+  }
+}
+
+.btn {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 15px 30px;
+  cursor: pointer;
+
+  &.btn-primary {
+    background-color: green;
+    color: #fff;
+  }
+}
+
+.form-wrap {
+  position: relative;
+  margin: auto;
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  border: 1px solid rgb(241, 245, 247);
+  border-radius: 2px;
+
+  form {
+    & > div {
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  input[type="text"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: #eef3f5;
   }
 }

@@ -54,7 +54,7 @@ RSpec.describe Article, type: :model do
       articles.each { |article| article.votes.create!(user_id: users[1].id) }
       articles[1].votes.create!(user_id: users[2].id)
 
-      expect(Article.most_voted).to eq(articles[1])
+      expect(Article.most_voted.last).to eq(articles[1])
     end
   end
 end

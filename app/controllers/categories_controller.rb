@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @most_voted = Article.most_voted.includes(:category)
+    @most_voted = Article.most_voted.includes(:category).last
     @most_recents = Article.latest_in_categories.includes(:category)
   end
 

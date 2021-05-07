@@ -11,17 +11,19 @@ module ApplicationHelper
     box_wrapper('user_action_links') do
       if user.nil?
         "#{
-          link_to 'Sign in', new_session_path
+          link_to 'Sign in', new_session_path, class: 'menu-link'
         }
+        <span class='separator'></span>
         #{
-          link_to 'Register', new_user_path
+          link_to 'Register', new_user_path, class: 'menu-link'
         }".html_safe
       else
         "#{
-          link_to 'New Article', new_article_path
+          link_to 'New Article', new_article_path, class: 'menu-link'
         }
+        <span class='separator'></span>
         #{
-          link_to 'Sign out', session_path(user), method: :delete
+          link_to 'Sign out', session_path(user), method: :delete, class: 'menu-link'
         }".html_safe
       end
     end

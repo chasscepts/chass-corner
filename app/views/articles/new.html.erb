@@ -1,18 +1,38 @@
-<div>
-  <h2>Create An Article</h2>
-
-  <%= form_with model: @article do |f| %>
-    <div>
-      <%= f.collection_select :category_id, @categories, :id, :name %>
+<div id="new-article-page">
+  <%= render 'loader', id: 'image-upload-loader' %>
+  <h2 class="text-center">Create An Article</h2>
+  <div id="article-upload-wrapper" class="article-form-file-upload-selector image-upload">
+    <div class="file-upload-wrapper">
+      <label class="file-input-label">
+        <b>First Click To Upload Article Image To The Server</b><br><br>
+        <b class="text-danger">Image must NOT be greater than 2MB</b><br><br>
+        <span id="file-name">No File Selected</span>
+        <input type="file" accept="image/png,image/jpg" id="image-file-input" class="clip">
+      </label>
+      <div class="upload-btn-wrap">
+        <button id="image-upload-btn" class="btn btn-primary">Upload Image</button>
+      </div>
     </div>
-    <div>
-      <%= f.text_field :title, placeholder: 'Enter Title' %>
+    <div class="article-form-wrapper">
+      <div>
+        <div class="form-wrap">
+          <%= form_with model: @article, id: 'new_article_form' do |f| %>
+            <%= f.hidden_field :image %>
+            <div>
+              <%= f.collection_select :category_id, @categories, :id, :name %>
+            </div>
+            <div>
+              <%= f.text_field :title, placeholder: 'Enter Title' %>
+            </div>
+            <div>
+              <%= f.text_area :text, placeholder: 'Content ...', class: 'article-text' %>
+            </div>
+            <div class="flex justify-content-end">
+              <%= f.submit 'Submit Article', class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div>
-      <%= f.text_area :text, placeholder: 'Content ...' %>
-    </div>
-    <div>
-      <%= f.submit 'Submit Article' %>
-    </div>
-  <% end %>
+  </div>
 </div>

@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
     if @article.save
       redirect_to root_path, notice: 'Article Created'
     else
@@ -19,6 +19,6 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit([:title, :category_id, :text])
+      params.require(:article).permit([:title, :category_id, :text, :image])
     end
 end

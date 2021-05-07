@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.clip {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  clip-path: circle(1px at 0 0);
+}
+
+.dim {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.cover {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cover.open {
+  display: block;
+}
+
+.text-danger {
+  color: rgb(139, 5, 5);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-child {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-wrap {
+  background-color: #fff;
+  padding: 40px;
+}
+
+.fore {
+  z-index: 2000;
+}
+
+.menu-link {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.user_action_links {
+  .separator {
+    display: inline-block;
+    width: 2px;
+    height: 10px;
+    background-color: gray;
+  }
+}
