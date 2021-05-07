@@ -1,0 +1,18 @@
+<div>
+  <h2>Create An Article</h2>
+
+  <%= form_with model: @article do |f| %>
+    <div>
+      <%= f.collection_select :category_id, @categories, :id, :name %>
+    </div>
+    <div>
+      <%= f.text_field :title, placeholder: 'Enter Title' %>
+    </div>
+    <div>
+      <%= f.text_area :text, placeholder: 'Content ...' %>
+    </div>
+    <div>
+      <%= f.submit 'Submit Article' %>
+    </div>
+  <% end %>
+</div>

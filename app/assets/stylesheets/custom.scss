@@ -3,9 +3,39 @@ html, body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
 *, *::after, *::before {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.page-header {
+  padding: 10px 20px;
+  .logo {
+    margin: 0;
+    font-size: 1.4rem;
+  }
 }

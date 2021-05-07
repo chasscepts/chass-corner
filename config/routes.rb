@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :articles do
+  resources :articles, only: [:new, :create] do
     resources :votes, only: [:create]
   end
 
