@@ -19,4 +19,9 @@ module CategoriesHelper
       end
     )
   end
+
+  def vote_link(article, user)
+    return if user.nil? || user.id == article.author_id || article.votes.map(&:user_id).include?(user.id)
+    link_to 'ote', article_votes_path(article), method: :post, class: 'media-link vote-link'
+  end
 end

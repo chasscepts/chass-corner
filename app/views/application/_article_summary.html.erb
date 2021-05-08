@@ -2,8 +2,10 @@
   <span class="article-category"><%= category.name %></span>
   <h3 class="heading"><%= article.title %></h3>
   <p class="summary"><%= article_summary article %></p>
-  <div class="author"><b>Voted </b><%= article.author.name %></div>
+  <div class="votes-count mb-10px">Voted <%= article.votes_count %> times</div>
   <div class="author"><b>Author: </b><%= article.author.name %></div>
-
+  <div class="vote_links">
+    <%= vote_link(article, current_user) %>
+  </div>
   <div class="summary-footer d-none"><%= link_to 'Read More', article_path(article) %></div>
 </div>
