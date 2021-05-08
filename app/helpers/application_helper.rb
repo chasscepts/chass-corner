@@ -33,6 +33,17 @@ module ApplicationHelper
     end
   end
 
+  def footer_social_media_links
+    box_wrapper('d-flex align-items-center') do
+      "
+        <span class='text-light'>Connect with us: </span>
+        #{safe_join(
+          %w[twitter instagram facebook].map { |platform| link_to image_tag("iconfinder_#{platform}.svg", class: 'w-100 footer-media-icon'), root_path, class: 'footer-media-link' }
+        )}
+      ".html_safe
+    end
+  end
+
   def box_wrapper(class_name, &block)
     content = capture(&block)
     content_tag(:div, content, class: class_name)

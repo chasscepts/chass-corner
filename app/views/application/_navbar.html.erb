@@ -1,6 +1,7 @@
 <header class="page-header d-flex justify-content-space-between align-items-center">
-  <h1 class="logo">Chass corner</h1>
+  <%= link_to image_tag('corner_logo.png', class: "logo"), root_path %>
   <div class="menu-links">
+    <%= link_to 'Home', root_path, class: 'menu-link' %>
     <%= menu_links %>
   </div>
   <%= user_action_links current_user %>

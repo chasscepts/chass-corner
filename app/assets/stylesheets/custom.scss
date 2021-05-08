@@ -116,13 +116,25 @@ a {
 
 .page-header {
   position: sticky;
+  z-index: 2000;
   top: 0;
   padding: 20px;
+  background-color: $color-light;
   border-bottom: 3px solid gray;
-  .logo {
-    margin: 0;
-    font-size: 1.4rem;
+}
+
+.page-footer {
+  padding: 12px 20px;
+  background-color: $color-dark;
+
+  .footer-media-link {
+    height: 24px;
+    width: 24px;
   }
+}
+
+.logo {
+  width: 68px;
 }
 
 .page-main {
