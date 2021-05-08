@@ -1,3 +1,7 @@
-<h1>Register</h1>
+<div class="center-child bg-light">
+  <div class="form-wrap">
+    <h1 class="text-green">Register</h1>
+    <%= render 'user_form', url: users_path, user: @user, submit_label: 'Register' %>
+  </div>
+</div>
 
-<%= render 'user_form', url: users_path, user: @user, submit_label: 'Register' %>

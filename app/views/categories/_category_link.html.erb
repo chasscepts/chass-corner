@@ -2,9 +2,9 @@
   <a class="image-link justify-content-space-between" href="<%= category_path(article.category) %>">
     <img class="image-bg" src="<%= article.image %>" alt="<%= article.title %>">
     <div class="dimmer"></div>
-    <div class="text-light article-category-name">
+    <div class="text-light article-category-name z-normal">
       <div class="inner"><%= article.category.name %></div>
     </div>
-    <div class="text-light"><%= article.title %></div>
+    <div class="text-light z-normal"><%= article.title %></div>
   </a>
 </div>

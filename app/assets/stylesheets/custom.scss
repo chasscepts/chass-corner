@@ -59,8 +59,16 @@ a {
   color: $color-secondary;
 }
 
+.text-green {
+  color: $color-green;
+}
+
 .text-center {
   text-align: center;
+}
+
+.bg-light {
+  background-color: $color-light;
 }
 
 .center-child {
@@ -109,9 +117,17 @@ a {
   margin-right: 10px;
 }
 
+.mt-15px {
+  margin-top: 15px;
+}
+
 .loader-wrap {
   background-color: #fff;
   padding: 40px;
+}
+
+.z-normal {
+  z-index: 1000;
 }
 
 .page-header {
@@ -120,7 +136,7 @@ a {
   top: 0;
   padding: 20px;
   background-color: $color-light;
-  border-bottom: 3px solid gray;
+  border-bottom: 5px solid $color-dark;
 }
 
 .page-footer {
@@ -140,6 +156,8 @@ a {
 .page-main {
   position: relative;
   height: calc(100vh - 65px);
+  background-color: $color-dark;
+  padding: 0 5px 5px;
 }
 
 .btn {
@@ -150,7 +168,7 @@ a {
   cursor: pointer;
 
   &.btn-primary {
-    background-color: green;
+    background-color: $color-secondary;
     color: #fff;
   }
 }
