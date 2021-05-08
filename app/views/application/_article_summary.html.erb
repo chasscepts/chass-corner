@@ -2,10 +2,13 @@
   <span class="article-category"><%= category.name %></span>
   <h3 class="heading"><%= article.title %></h3>
   <p class="summary"><%= article_summary article %></p>
-  <div class="votes-count mb-10px">Voted <%= article.votes_count %> times</div>
-  <div class="author"><b>Author: </b><%= article.author.name %></div>
-  <div class="vote_links">
-    <%= vote_link(article, current_user) %>
+  <div class="votes-count mb-10px">
+    Voted <%= pluralize(article.votes_count, 'time') %>
   </div>
-  <div class="summary-footer d-none"><%= link_to 'Read More', article_path(article) %></div>
+  <div class="author"><b>Author: </b><%= article.author.name %></div>
+  <div class="media_links">
+    <%= vote_link(article, current_user) %>
+    <div class="fb-share-button mx-10px" data-href="<%= article_url(article) %>" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+  </div>
+  <div class="summary-footer"><%= link_to 'Read More', article_path(article) %></div>
 </div>

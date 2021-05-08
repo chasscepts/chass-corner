@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  attr_reader :current_user
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_record_not_found
 
   helper_method :current_user
 
@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
 
     def current_user
       @current_user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+    end
+
+    def handle_record_not_found
+      render '404_page', status: 404
     end
 end

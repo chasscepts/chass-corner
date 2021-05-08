@@ -4,6 +4,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100vw;
+  max-width: 100%;
   height: 100vh;
   font-size: 14px;
   box-sizing: border-box;
@@ -40,6 +41,10 @@ a {
 
 .cover.open {
   display: block;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .text-danger {
@@ -97,6 +102,11 @@ a {
 
 .mb-10px {
   margin-bottom: 10px;
+}
+
+.mx-10px {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .loader-wrap {

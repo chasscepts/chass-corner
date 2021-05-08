@@ -41,3 +41,24 @@
   resize: none;
   height: 250px;
 }
+
+.article-page {
+  width: 100%;
+
+  .article-poster {
+    max-height: 300px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 740px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+
+    &.article-full-text {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
