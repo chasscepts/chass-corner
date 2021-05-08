@@ -71,8 +71,12 @@ a {
   z-index: 2000;
 }
 
-.flex {
+.d-flex {
   display: flex;
+}
+
+.d-none {
+  display: none;
 }
 
 .justify-content-space-between {

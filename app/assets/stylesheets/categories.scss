@@ -69,3 +69,27 @@
     }
   }
 }
+
+.articles-list {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: 100%;
+
+  .article-summary-wrapper {
+    flex: 0 0 50%;
+    height: 50%;
+    display: flex;
+    flex-flow: row nowrap;
+
+    &.reverse {
+      flex-flow: row-reverse nowrap;
+    }
+
+    .article_summary_image {
+      flex: 0 0 50%;
+      width: 50%;
+    }
+  }
+}

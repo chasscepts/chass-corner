@@ -33,8 +33,6 @@ module ApplicationHelper
     end
   end
 
-  private
-
   def box_wrapper(class_name, &block)
     content = capture(&block)
     content_tag(:div, content, class: class_name)

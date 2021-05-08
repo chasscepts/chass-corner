@@ -1,5 +1,5 @@
 <div class="home-wrap">
-  <div class="most-voted-wrap flex flex-1">
+  <div class="most-voted-wrap d-flex flex-1">
     <div class="category-link most-voted">
       <a href="<%= article_path(@most_voted) %>" class="image-link justify-content-end">
         <img class="image-bg" src="<%= @most_voted.image %>" alt="<%= @most_voted.title %>">
@@ -9,7 +9,7 @@
       </a>
     </div>
     <div class="category-link category-link-card">
-      <%= render 'article_summary', article: @most_voted, class_name: 'article-summary w-100' %>
+      <%= render 'article_summary', article: @most_voted, category: @most_voted.category, class_name: 'article-summary w-100' %>
     </div>
   </div>
   <div class="category-links">
