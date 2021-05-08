@@ -1,3 +1,71 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import './colors';
+
+.home-wrap {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .category-link {
+    height: 100%;
+
+    &.category-link-card {
+      flex: 0 0 25%;
+    }
+
+    &.most-voted {
+      flex: 0 0 75%;
+    }
+
+    .image-link {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 25px;
+
+      .image-bg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+
+      .dimmer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        opacity: 0.8;
+        z-index: -1;
+      }
+
+      .title {
+        font-size: 1rem;
+        margin: 0 0 14px;
+      }
+    }
+  }
+
+  .category-links {
+    flex: 0 0 30%;
+    display: flex;
+
+    .article-category-name {
+      display: flex;
+
+      .inner {
+        flex: 0;
+        border-bottom: 2px solid $color-secondary-lighter;
+      }
+    }
+  }
+}

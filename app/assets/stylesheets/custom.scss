@@ -1,3 +1,5 @@
+@import './colors';
+
 html, body {
   margin: 0;
   padding: 0;
@@ -14,6 +16,59 @@ html, body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.clip {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  clip-path: circle(1px at 0 0);
+}
+
+.dim {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.cover {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.cover.open {
+  display: block;
+}
+
+.text-danger {
+  color: $color-danger
+}
+
+.text-light {
+  color: $color-light;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-child {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fore {
+  z-index: 2000;
 }
 
 .flex {
@@ -36,13 +91,25 @@ a {
   flex: 1;
 }
 
+.loader-wrap {
+  background-color: #fff;
+  padding: 40px;
+}
+
 .page-header {
+  position: sticky;
+  top: 0;
   padding: 20px;
   border-bottom: 3px solid gray;
   .logo {
     margin: 0;
     font-size: 1.4rem;
   }
+}
+
+.page-main {
+  position: relative;
+  height: calc(100vh - 65px);
 }
 
 .btn {
@@ -85,5 +152,55 @@ a {
     border: none;
     outline: none;
     background-color: #eef3f5;
+  }
+}
+
+.menu-link {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin: 0 10px;
+}
+
+.user_action_links {
+  .separator {
+    display: inline-block;
+    width: 2px;
+    height: 10px;
+    background-color: gray;
+  }
+}
+
+.article-summary {
+  width: 50%;
+  align-self: stretch;
+  padding: 15px 10px;
+
+  &.w-100 {
+    width: 100%;
+  }
+
+  .article-category {
+    display: inline-block;
+    color: $color-secondary-light;
+    font-weight: bold;
+    border-bottom: 2px solid $color-secondary-light;
+  }
+
+  .heading {
+    font-size: 1rem;
+    margin: 15px 0 20px;
+  }
+
+  .summary {
+    margin: 0 0 20px;
+  }
+
+  .author {
+    margin: 0 0 20px;
+  }
+
+  .summary-footer {
+    color: $color-secondary;
   }
 }

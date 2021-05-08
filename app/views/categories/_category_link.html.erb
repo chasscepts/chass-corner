@@ -1,0 +1,10 @@
+<div class="category-link category-link-card">
+  <a class="image-link justify-content-space-between" href="<%= category_path(article.category) %>">
+    <img class="image-bg" src="<%= article.image %>" alt="<%= article.title %>">
+    <div class="dimmer"></div>
+    <div class="text-light article-category-name">
+      <div class="inner"><%= article.category.name %></div>
+    </div>
+    <div class="text-light"><%= article.title %></div>
+  </a>
+</div>

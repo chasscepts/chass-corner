@@ -3,6 +3,10 @@ module ApplicationHelper
     Category.all
   end
 
+  def article_summary(article)
+    "#{article.text[0...50]} ..."
+  end
+
   def menu_links
     safe_join(categories.map { |category| render 'menu_link', category: category })
   end
