@@ -47,6 +47,10 @@ a {
   width: 100%;
 }
 
+.h-100 {
+  height: 100%;
+}
+
 .text-danger {
   color: $color-danger
 }
@@ -92,6 +96,10 @@ a {
   display: none;
 }
 
+.flex-direction-column {
+  flex-direction: column;
+}
+
 .justify-content-space-between {
   justify-content: space-between;
 }
@@ -119,6 +127,41 @@ a {
 
 .mt-15px {
   margin-top: 15px;
+}
+
+.notice,
+.alert {
+  &,
+  &.close {
+    width: 100%;
+    height: 30px;
+    overflow-y: auto;
+    text-align: center;
+    color: dimgrey;
+    font-size: 14px;
+    transition: max-height 3s linear;
+
+    .notification-inner {
+      padding: 5px;
+    }
+  }
+
+  &.close {
+    max-height: 0;
+  }
+}
+
+.notice {
+  background-color: $color-success;
+}
+
+.alert {
+  background-color: $color-alert;
+}
+
+.errors {
+  font-size: 10px;
+  color: $color-danger;
 }
 
 .loader-wrap {

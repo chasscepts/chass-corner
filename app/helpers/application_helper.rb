@@ -44,6 +44,14 @@ module ApplicationHelper
     end
   end
 
+  def render_notifications(notice, alert)
+    safe_join(
+      [{ content: notice, class: 'notice' }, { content: alert, class: 'alert' }].map do |item|
+        box_wrapper(item[:class]) { box_wrapper('notification-inner') { item[:content] } } if item[:content]
+      end
+    )
+  end
+
   def box_wrapper(class_name, &block)
     content = capture(&block)
     content_tag(:div, content, class: class_name)

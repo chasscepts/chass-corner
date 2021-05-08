@@ -8,7 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "../articles/article"
+import './hide_notifications'
+import '../articles/article'
 
 Rails.start()
 Turbolinks.start()
