@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def article_summary(article)
-    "#{article.text[0...50]} ..."
+    "#{article.text[0...150]} ..." unless article.nil?
   end
 
   def menu_links
@@ -50,6 +50,13 @@ module ApplicationHelper
         box_wrapper(item[:class]) { box_wrapper('notification-inner') { item[:content] } } if item[:content]
       end
     )
+  end
+
+  def vote_link(article, user)
+    return if user.nil? || user.id == article.author_id || article.votes.map(&:user_id).include?(user.id)
+    box_wrapper 'media-link-wrap' do
+      link_to 'ote', article_votes_path(article), method: :post, class: 'media-link vote-link'
+    end
   end
 
   def box_wrapper(class_name, &block)

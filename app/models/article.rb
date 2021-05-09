@@ -9,6 +9,6 @@ class Article < ApplicationRecord
   validates :category_id, presence: true
   validates :author_id, presence: true
   validates :title, presence: true, length: { minimum: 10 }
-  validates :text, presence: true, length: { minimum: 50 }
+  validates :text, presence: true, length: { minimum: 300 }
   validates :image, presence: true
 end

@@ -10,6 +10,8 @@ import "channels"
 
 import './hide_notifications'
 import '../articles/article'
+import '../categories/category'
+import './facebook_init'
 
 Rails.start()
 Turbolinks.start()

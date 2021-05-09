@@ -116,6 +116,10 @@ a {
   flex: 1;
 }
 
+.m-0 {
+  margin: 0;
+}
+
 .mb-10px {
   margin-bottom: 10px;
 }
@@ -127,6 +131,18 @@ a {
 
 .mt-15px {
   margin-top: 15px;
+}
+
+.mb-15px {
+  margin-bottom: 15px;
+}
+
+.pb-15px {
+  padding-bottom: 15px;
+}
+
+.pt-40px {
+  padding-top: 40px;
 }
 
 .notice,
@@ -182,6 +198,21 @@ a {
   border-bottom: 5px solid $color-dark;
 }
 
+.logo {
+  width: 68px;
+}
+
+.page-main {
+  position: relative;
+  min-height: calc(100vh - 65px);
+  background-color: $color-dark;
+  padding: 0 5px 5px;
+}
+
+.page-screen {
+  height: calc(100vh - 65px);
+}
+
 .page-footer {
   padding: 12px 20px;
   background-color: $color-dark;
@@ -190,17 +221,6 @@ a {
     height: 24px;
     width: 24px;
   }
-}
-
-.logo {
-  width: 68px;
-}
-
-.page-main {
-  position: relative;
-  height: calc(100vh - 65px);
-  background-color: $color-dark;
-  padding: 0 5px 5px;
 }
 
 .btn {
@@ -287,11 +307,44 @@ a {
     margin: 0 0 20px;
   }
 
-  .author {
-    margin: 0 0 20px;
-  }
-
   .summary-footer {
     color: $color-secondary;
+  }
+}
+
+.media_links {
+  display: flex;
+
+  .media-link-wrap {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .media-link {
+    position: relative;
+    padding: 7px 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &.vote-link {
+      padding: 7px 15px 7px 25px;
+      color: #fff;
+      background: linear-gradient(to bottom, #075f07 0, #022e02 50%, #075f07 100%);
+      font-size: 14px;
+
+      &::before {
+        content: '\2714';
+        position: absolute;
+        left: 7px;
+        font-weight: bolder;
+        font-size: 28px;
+        top: -3px;
+        color: red;
+      }
+    }
   }
 }
