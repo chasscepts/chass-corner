@@ -10,7 +10,7 @@ module CategoriesHelper
   def article_list(category, articles)
     safe_join(
       articles.each_with_index.map do |article, index|
-        wrapper_class = 'article-summary-wrapper'
+        wrapper_class = 'article-summary-wrapper half-page-screen'
         wrapper_class = "#{wrapper_class} reverse" if index % 4 == 2 || index % 4 == 3
         box_wrapper wrapper_class do
           "#{image_tag(article.image, class: 'article_summary_image')}

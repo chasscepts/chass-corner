@@ -233,6 +233,11 @@ a {
   min-height: calc(100vh - 65px);
 }
 
+.half-page-screen {
+  --full-screen: calc(100vh - 65px);
+  height: calc(var(--full-screen) / 2);
+}
+
 .page-footer {
   padding: 12px 20px;
   background-color: $color-dark;
@@ -292,7 +297,8 @@ a {
   font-size: 14px;
   margin: 0 10px;
 
-  &.active {
+  &.active,
+  &:hover {
     color: $color-secondary;
   }
 }
