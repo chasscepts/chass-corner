@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if current_user.nil?
-      redirect_to new_session_path, alert: 'Use must be signed in to perform action'
+      redirect_to new_session_path, alert: 'Please Log in to continue'
     end
   end
 
