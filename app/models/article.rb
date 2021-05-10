@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :votes, dependent: :destroy
 
-  scope :latest_in_categories, -> { select('DISTINCT ON (category_id) *').order("category_id, created_at DESC") }
+  scope :latest_in_categories, -> { select('DISTINCT ON (category_id) *').order('category_id, created_at DESC') }
   scope :most_voted, -> { order('votes_count') }
 
   validates :category_id, presence: true

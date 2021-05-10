@@ -42,7 +42,10 @@ module ApplicationHelper
       "
         <span class='text-light'>Connect with us: </span>
         #{safe_join(
-          %w[twitter instagram facebook].map { |platform| link_to image_tag("iconfinder_#{platform}.svg", class: 'w-100 footer-media-icon'), root_path, class: 'footer-media-link' }
+          %w[twitter instagram facebook].map do |platform|
+            link_to image_tag("iconfinder_#{platform}.svg", class: 'w-100 footer-media-icon'), root_path,
+                    class: 'footer-media-link'
+          end
         )}
       ".html_safe
     end
@@ -58,6 +61,7 @@ module ApplicationHelper
 
   def vote_link(article, user)
     return if user.nil? || user.id == article.author_id || article.votes.map(&:user_id).include?(user.id)
+
     box_wrapper 'media-link-wrap d-flex' do
       link_to 'ote', article_votes_path(article), method: :post, class: 'media-link vote-link'
     end
@@ -70,8 +74,9 @@ module ApplicationHelper
 
   private
 
-    def menu_class(page, menu)
-      return 'menu-link' if page.nil?
-      page == menu ? 'menu-link active' : 'menu-link'
-    end
+  def menu_class(page, menu)
+    return 'menu-link' if page.nil?
+
+    page == menu ? 'menu-link active' : 'menu-link'
+  end
 end

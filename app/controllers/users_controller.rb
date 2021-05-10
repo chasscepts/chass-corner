@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    set_page 'Register'
+    init_page_name 'Register'
   end
 
   def create
     @user = User.new(name: params[:name])
-    if(@user.save)
+    if @user.save
       session[:current_user_id] = @user.id
       redirect_to root_path, notice: 'Your account was successfully setup'
     else

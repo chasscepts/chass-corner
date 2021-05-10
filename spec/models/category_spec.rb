@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../support/matchers/not_talk_to_db.rb'
+require_relative '../support/matchers/not_talk_to_db'
 
 RSpec.describe Category, type: :model do
   describe 'validation' do

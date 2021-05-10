@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def new
     @categories = Category.all
     @article = Article.new
-    set_page 'New Article'
+    init_page_name 'New Article'
   end
 
   def create
@@ -19,12 +19,12 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    set_page @article.category.name
+    init_page_name @article.category.name
   end
 
   private
 
-    def article_params
-      params.require(:article).permit([:title, :category_id, :text, :image])
-    end
+  def article_params
+    params.require(:article).permit(%i[title category_id text image])
+  end
 end
