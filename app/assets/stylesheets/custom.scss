@@ -1,5 +1,7 @@
 @import './colors';
 
+$header-height: 65px;
+
 html,
 body {
   margin: 0;
@@ -209,7 +211,7 @@ a {
   position: sticky;
   z-index: 2000;
   top: 0;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: $color-light;
   border-bottom: 5px solid $color-dark;
 }
@@ -226,15 +228,15 @@ a {
 }
 
 .page-screen {
-  height: calc(100vh - 65px);
+  height: calc(100vh - #{$header-height});
 }
 
 .page-screen-min {
-  min-height: calc(100vh - 65px);
+  min-height: calc(100vh - #{$header-height});
 }
 
 .half-page-screen {
-  --full-screen: calc(100vh - 65px);
+  --full-screen: calc(100vh - #{$header-height});
 
   height: calc(var(--full-screen) / 2);
 }

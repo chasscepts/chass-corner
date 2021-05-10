@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def article_summary(article)
-    "#{article.text[0...100]} ..." unless article.nil?
+    "#{article.text[0...80]} ..." unless article.nil?
   end
 
   def home_menu_link(page)
