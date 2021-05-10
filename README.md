@@ -20,7 +20,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://chasscepts.github.io/capstone-project-html/)
+[Live Demo Link](https://chass-corner.herokuapp.com/)
 
 
 ## Getting Started
@@ -100,4 +100,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+This project is [MIT](./LICENSE)
