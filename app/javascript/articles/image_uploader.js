@@ -1,3 +1,63 @@
+const customizeDragAndDropEvents = (dropArea) => {
+ const preventDefaults = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  const highlight = (e) => {
+    dropArea.classList.add('highlight')
+  }
+
+  const unhighlight = (e) => {
+    dropArea.classList.remove('highlight')
+  }
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false)
+  });
+
+  ['dragenter', 'dragover'].forEach(eventName => {
+    dropArea.addEventListener(eventName, highlight, false)
+  });
+
+  ['dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, unhighlight, false)
+  });
+}
+
+
+const getPreview = (wrapper) => {
+  const preview = document.createElement('img');
+  const canLoad = !!window.FileReader;
+
+  let appended = false;
+
+  return {
+    load: (file) => {
+      if (!canLoad) {
+        return;
+      }
+      const reader = new FileReader();
+
+      reader.addEventListener("load", function () {
+        preview.src = reader.result;
+        if (!appended) {
+          wrapper.append(preview);
+          appended = true;
+        }
+      }, false);
+      reader.readAsDataURL(file);
+    },
+    clear: () => {
+      if (!appended) {
+        return;
+      }
+      preview.remove();
+      appended = false;
+    }
+  }
+}
+
 const setupImageUpload = (form) => {
   let file = null;
 
@@ -6,10 +66,22 @@ const setupImageUpload = (form) => {
   const imageUploadBtn = wrapper.querySelector('#image-upload-btn');
   const fileInput = wrapper.querySelector('#image-file-input');
   const nameSpan = wrapper.querySelector('#file-name');
-  const acceptMimeTypes = ['image/png', 'image/jpg'];
+  const fileLabel = wrapper.querySelector('#file-input-label');
+  const acceptMimeTypes = ['image/png', 'image/jpeg'];
   const loader = document.querySelector('#image-upload-loader');
+  const stepInfo = document.querySelector('#step-info');
+  const preview = getPreview(document.querySelector('#preview-wrap'));
+  const maxImageSize = 512 * 1024;
   const supportsFileReader = window.FileReader && window.Blob;
-  const setFileName = () => nameSpan.innerHTML = file? file.name : 'No File Selected';
+  const setFile = () => {
+    if (file) {
+      nameSpan.innerHTML = file.name;
+      preview.load(file);
+    } else {
+      nameSpan.innerHTML = 'No File Selected';
+      preview.clear();
+    }
+  }
 
   const getMimeType = (file) => {
     if (supportsFileReader) {
@@ -49,15 +121,15 @@ const setupImageUpload = (form) => {
     return Promise.resolve(file.type);
   }
 
-  fileInput.addEventListener('change', () => {
-    file = fileInput.files && fileInput.files[0];
+  const fileChangeHandler = (files) => {
+    file = files && files[0];
 
     if (file) {
-      if (file.size > 2 * 1024 * 1024) {
+      if (file.size > maxImageSize) {
         file = null;
         file = null;
-        setFileName();
-        alert('The file you is choose too large. The maximum allowed file size is 2MB');
+        setFile();
+        alert('The file you choose is too large. The maximum allowed file size is 500KB');
         return;
       }
 
@@ -66,13 +138,19 @@ const setupImageUpload = (form) => {
           file = null;
           alert('Please choose a PNG or JPEG image');
         }
-        setFileName();
+        setFile();
       });
     }
     else {
-      setFileName();
+      setFile();
     }
-  });
+  }
+
+  customizeDragAndDropEvents(fileLabel);
+
+  fileInput.addEventListener('change', () => fileChangeHandler(fileInput.files));
+
+  fileLabel.addEventListener('drop', (e) => fileChangeHandler(e.dataTransfer && e.dataTransfer.files))
 
   imageUploadBtn.addEventListener('click', () => {
     if (!file) {
@@ -95,6 +173,7 @@ const setupImageUpload = (form) => {
       const json = JSON.parse(data);
       document.querySelector('#article_image').value = json.secure_url
       loader.classList.remove('open');
+      stepInfo.innerHTML = 'Step 2 of 2';
       wrapper.classList.toggle('image-upload');
     })
     .catch(err => {
@@ -112,5 +191,4 @@ const main = () => {
   setupImageUpload(form);
 }
 
-//document.addEventListener('turbolinks:load', main);
 main();

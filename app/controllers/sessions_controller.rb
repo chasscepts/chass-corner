@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
     @user = User.new
+    set_page 'Sign In'
   end
 
   def create

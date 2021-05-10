@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   def new
     @categories = Category.all
     @article = Article.new
+    set_page 'New Article'
   end
 
   def create
@@ -18,6 +19,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    set_page @article.category.name
   end
 
   private

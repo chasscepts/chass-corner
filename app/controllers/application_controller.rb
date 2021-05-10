@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  helper_method :current_page
+
   def authenticate_user!
     if current_user.nil?
       redirect_to new_session_path, alert: 'Use must be signed in to perform action'
@@ -13,6 +15,14 @@ class ApplicationController < ActionController::Base
 
     def current_user
       @current_user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+    end
+
+    def current_page
+      @current_page ||= 'Home'
+    end
+
+    def set_page(page)
+      @current_page = page
     end
 
     def handle_record_not_found

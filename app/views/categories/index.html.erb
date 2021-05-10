@@ -3,15 +3,15 @@
 <div class="home-wrap page-screen bg-light">
   <div class="most-voted-wrap d-flex flex-1">
     <div class="category-link most-voted">
-      <a href="<%= article_path(@most_voted) %>" class="image-link justify-content-end">
-        <img class="image-bg" src="<%= @most_voted.image %>" alt="<%= @most_voted.title %>">
+      <%= most_voted_link @most_voted, 'image-link justify-content-end' do %>
+        <%= image_tag @most_voted.image, class: 'image-bg' %>
         <div class="dimmer"></div>
         <h3 class="title text-secondary z-normal"><%= @most_voted.title %></h3>
         <div class="text-light z-normal"><%= article_short_summary(@most_voted) %></div>
-      </a>
+      <% end %>
     </div>
     <div class="category-link category-link-card">
-      <%= render 'article_summary', article: @most_voted, category: @most_voted.category, class_name: 'article-summary w-100' %>
+      <%= render_most_voted_summary @most_voted, 'article-summary w-100' %>
     </div>
   </div>
   <div class="category-links">

@@ -19,4 +19,14 @@ module CategoriesHelper
       end
     )
   end
+
+  def most_voted_link(article, class_name, &block)
+    return if article.nil?
+    link_to(article, class: class_name, &block)
+  end
+
+  def render_most_voted_summary(article, class_name)
+    return if article.nil?
+    render 'article_summary', article: article, category:article.category, class_name: class_name
+  end
 end

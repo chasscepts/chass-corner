@@ -9,5 +9,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @articles = @category.articles.includes(:author).includes(:votes)
+    set_page @category.name
   end
 end
