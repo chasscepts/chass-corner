@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @articles = @category.articles.includes(:author).includes(:votes)
+    @articles = @category.articles.merge(Article.most_recent_first).includes(:author).includes(:votes)
     init_page_name @category.name
   end
 end

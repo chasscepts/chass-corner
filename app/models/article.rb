@@ -5,6 +5,7 @@ class Article < ApplicationRecord
 
   scope :latest_in_categories, -> { select('DISTINCT ON (category_id) *').order('category_id, created_at DESC') }
   scope :most_voted, -> { order('votes_count') }
+  scope :most_recent_first, -> { order('created_at DESC') }
 
   validates :category_id, presence: true
   validates :author_id, presence: true
