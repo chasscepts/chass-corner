@@ -60,10 +60,15 @@ module ApplicationHelper
   end
 
   def vote_link(article, user)
-    return if user.nil? || user.id == article.author_id || article.votes.map(&:user_id).include?(user.id)
+    return if user.nil? || user.id == article.author_id
 
+    vote = article.votes.where(user_id: user.id).first
     box_wrapper 'media-link-wrap d-flex' do
-      link_to 'ote', article_votes_path(article), method: :post, class: 'media-link vote-link'
+      if vote.nil?
+        link_to 'vote', article_votes_path(article), method: :post, class: 'media-link vote-link'
+      else
+        link_to 'unvote', article_vote_path(article, vote), method: :delete, class: 'media-link vote-link'
+      end
     end
   end
 

@@ -347,7 +347,6 @@ a {
 
 .media_links {
   display: flex;
-  height: 30px;
 
   .media-link-wrap {
     margin-right: 10px;
@@ -363,20 +362,12 @@ a {
     border-radius: 3px;
 
     &.vote-link {
-      padding: 5px 15px 5px 25px;
+      padding: 5px 10px;
       color: #fff;
-      background: linear-gradient(to bottom, #075f07 0, #022e02 50%, #075f07 100%);
       font-size: 14px;
-
-      &::before {
-        content: '\2714';
-        position: absolute;
-        left: 7px;
-        font-weight: bolder;
-        font-size: 28px;
-        top: -3px;
-        color: red;
-      }
+      line-height: 0.8;
+      background: linear-gradient(to bottom, $color-secondary-light 0, $color-secondary 50%, $color-secondary-light 100%);
+      align-self: flex-start;
     }
   }
 }
