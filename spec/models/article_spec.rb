@@ -41,6 +41,20 @@ RSpec.describe Article, type: :model do
     end
   end
 
+  context 'associations' do
+    let(:user1) { User.create!(name: 'Francis') }
+    let(:user2) { User.create!(name: 'Chass') }
+    let(:user3) { User.create!(name: 'Charles') }
+    let(:category) { Category.create!(name: 'Family', priority: 1) }
+    let(:article) { Article.create!(author_id: user1.id, category_id: category.id, title: 'This is an article', text: 'a' * 350, image: 'http://localhost') }
+
+    it "retrieves an article's votes" do
+      vote1 = user2.votes.create!(article_id: article.id)
+      vote2 = user3.votes.create!(article_id: article.id)
+      expect(article.votes.map(&:id)).to eq([vote1.id, vote2.id])
+    end
+  end
+
   context 'latest_in_categories scope' do
     let(:user) { User.create!(name: 'Francis') }
     let(:categories) { %w[One Two Three].each_with_index.map { |n, i| Category.create!(name: n, priority: i) } }

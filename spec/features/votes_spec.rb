@@ -14,16 +14,18 @@ feature 'Vote' do
     visit article_path(article)
     click_on(class: 'vote-link')
 
-    expect(page).to have_text 'You successfully voted for this article.'
+    expect(page).to have_text 'You successfully voted for article.'
   end
 
-  scenario 'users cannot vote the same article twice' do
+  scenario 'users canun vote article' do
     login user2.name
     visit article_path(article)
     click_on(class: 'vote-link')
 
     visit article_path(article)
-    expect(page).to have_no_css '.vote-link'
+    click_on(class: 'vote-link')
+
+    expect(page).to have_text 'You successfully unvoted article.'
   end
 
   scenario 'users cannot vote their own article' do
