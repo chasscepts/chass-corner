@@ -5,6 +5,7 @@ module ApplicationHelper
 
   def content_for_head
     return unless content_for?(:head)
+
     yield
   end
 
