@@ -3,8 +3,13 @@ module CategoriesHelper
     article.text[0...70]
   end
 
-  def category_links(articles)
-    safe_join(articles.map { |article| render 'category_link', article: article })
+  def category_links(categories)
+    links = []
+    categories.each do |category|
+      latest = category.latest_article
+      links << render('category_link', category: category, article: latest) unless latest.nil?
+    end
+    safe_join(links)
   end
 
   def article_list(category, articles)
@@ -30,6 +35,6 @@ module CategoriesHelper
   def render_most_voted_summary(article, class_name)
     return if article.nil?
 
-    render 'article_summary', article: article, category: article.category, class_name: class_name
+    render 'article_summary', article: article, class_name: class_name
   end
 end

@@ -30,14 +30,14 @@ RSpec.describe User, type: :model do
     let(:category) { Category.create!(name: 'Family', priority: 1) }
 
     it "retrieves a user's articles" do
-      article1 = Article.create!(author_id: user.id, category_id: category.id, title: 'This is article 1', text: 'a' * 350, image: 'http://localhost')
-      article2 = Article.create!(author_id: user.id, category_id: category.id, title: 'This is article 2', text: 'a' * 350, image: 'http://localhost')
+      article1 = Article.create!(author_id: user.id, title: 'This is article 1', text: 'a' * 350, image: 'http://localhost')
+      article2 = Article.create!(author_id: user.id, title: 'This is article 2', text: 'a' * 350, image: 'http://localhost')
       expect(user.articles.map(&:id)).to eq([article1.id, article2.id])
     end
 
     it "retrieves a user's votes" do
-      article1 = Article.create!(author_id: user.id, category_id: category.id, title: 'This is article 1', text: 'a' * 350, image: 'http://localhost')
-      article2 = Article.create!(author_id: user.id, category_id: category.id, title: 'This is article 2', text: 'a' * 350, image: 'http://localhost')
+      article1 = Article.create!(author_id: user.id, title: 'This is article 1', text: 'a' * 350, image: 'http://localhost')
+      article2 = Article.create!(author_id: user.id, title: 'This is article 2', text: 'a' * 350, image: 'http://localhost')
       user2 = User.create!(name: 'Chass')
       vote1 = user2.votes.create!(article_id: article1.id)
       vote2 = user2.votes.create!(article_id: article2.id)

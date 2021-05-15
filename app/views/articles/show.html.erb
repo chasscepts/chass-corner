@@ -13,7 +13,7 @@
   <div class="article-full-text content"><%=  @article.text %></div>
   <div class="article-footer content">
     <div class="full-article-author mb-10px"><b>Written By: </b><%= @article.author.name %></div>
-    <div class="full-article-category mb-10px"><b>Submitted In Category: </b><%= @article.category.name %></div>
+    <div class="full-article-category mb-10px"><b>Submitted In Category: </b><%= categories_list(@article) %></div>
     <div class="full-article-votes mb-10px"><b>Total Votes: </b><%= @article.votes_count%></div>
     <div class="media_links">
       <%= vote_link(@article, current_user) %>

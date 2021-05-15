@@ -120,3 +120,28 @@
     }
   }
 }
+
+.category-checkboxes-list {
+  display: flex;
+
+  .category-checkbox-wrap {
+    flex: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    label {
+      margin-left: 3px;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.category-checkboxes-list-header {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}

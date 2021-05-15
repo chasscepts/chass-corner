@@ -7,6 +7,7 @@ feature 'Category List' do
 
   scenario 'all categories listed on home page' do
     categories = new_categories
+    # create_generic_articles categories, user1
     login user2.name
     visit root_path
     categories.each do |category|
@@ -16,13 +17,13 @@ feature 'Category List' do
 
   scenario 'older articles of each category NOT shown on home page' do
     categories = new_categories
-    articles = create_generic_articles(categories, user2)
-    create_articles(categories, user2)
+    articles = create_articles(categories, user2)
+    create_generic_articles(categories, user2)
     login user2.name
     visit root_path
 
     articles.each do |article|
-      expect(page).to have_no_css('div', text: article.title, match: :prefer_exact)
+      expect(page).to have_no_css('.latest-article-title', text: article.title, match: :prefer_exact)
     end
   end
 
@@ -35,7 +36,7 @@ feature 'Category List' do
     visit root_path
 
     articles.each do |article|
-      expect(page).to have_css('div', text: article.title, match: :prefer_exact)
+      expect(page).to have_css('.latest-article-title', text: article.title, match: :prefer_exact)
     end
   end
 end
@@ -74,11 +75,13 @@ feature 'show category' do
 end
 
 def new_article(category, user, title = 'A Test Article')
-  user.articles.create!(category_id: category.id, title: title, text: 'a' * 300, image: 'test.png')
+  article = user.articles.create!(title: title, text: 'a' * 350, image: 'test.png')
+  ArticleCategory.create!(article_id: article.id, category_id: category.id)
+  article
 end
 
 def new_categories
-  %w[Family Eduction Sports Culture].each_with_index.map { |n, i| Category.create!(name: n, priority: i) }
+  %w[Family Education Sports Culture].each_with_index.map { |n, i| Category.create!(name: n, priority: i) }
 end
 
 def create_generic_articles(categories, user)

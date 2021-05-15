@@ -5,39 +5,34 @@ RSpec.describe Article, type: :model do
     let(:author) { User.create!(name: 'Francis') }
     let(:category) { Category.create(name: 'Lifestyle', priority: 1) }
 
-    it 'fails on category_id missing' do
-      expect(Article.new(author_id: author.id, title: 'This is an article', text: 'a' * 350,
-                         image: 'http://localhost').valid?).to be false
-    end
-
     it 'fails on author_id missing' do
-      expect(Article.new(category_id: category.id, title: 'This is an article', text: 'a' * 350,
-                         image: 'http://localhost').valid?).to be false
+      article = article_ms_new_article(nil, 'This is an article', 'a' * 350, 'test.png')
+      expect(article.valid?).to be false
     end
 
     it 'fails on title missing' do
-      expect(Article.new(author_id: author.id, category_id: category.id, text: 'a' * 350,
-                         image: 'http://localhost').valid?).to be false
+      article = article_ms_new_article(author.id, nil, 'a' * 350, 'test.png')
+      expect(article.valid?).to be false
     end
 
     it 'fails on title too short' do
-      expect(Article.new(author_id: author.id, category_id: category.id, title: 'Thisisart', text: 'a' * 350,
-                         image: 'http://localhost').valid?).to be false
+      article = article_ms_new_article(author.id, 'Thisisart', 'a' * 350, 'test.png')
+      expect(article.valid?).to be false
     end
 
     it 'fails on text missing' do
-      expect(Article.new(author_id: author.id, category_id: category.id, title: 'This is an article',
-                         image: 'http://localhost').valid?).to be false
+      article = article_ms_new_article(author.id, 'This is an Article', nil, 'test.png')
+      expect(article.valid?).to be false
     end
 
     it 'fails on text too short' do
-      expect(Article.new(author_id: author.id, category_id: category.id, title: 'This is an article', text: 'a' * 209,
-                         image: 'http://localhost').valid?).to be false
+      article = article_ms_new_article(author.id, 'This is an Article', 'a' * 209, 'test.png')
+      expect(article.valid?).to be false
     end
 
     it 'passes with valid fields' do
-      expect(Article.new(author_id: author.id, category_id: category.id, title: 'This is an article', text: 'a' * 350,
-                         image: 'http://localhost').valid?).to be true
+      article = article_ms_new_article(author.id, 'This is an Article', 'a' * 350, 'test.png')
+      expect(article.valid?).to be true
     end
   end
 
@@ -46,7 +41,7 @@ RSpec.describe Article, type: :model do
     let(:user2) { User.create!(name: 'Chass') }
     let(:user3) { User.create!(name: 'Charles') }
     let(:category) { Category.create!(name: 'Family', priority: 1) }
-    let(:article) { Article.create!(author_id: user1.id, category_id: category.id, title: 'This is an article', text: 'a' * 350, image: 'http://localhost') }
+    let(:article) { create_article(user1, category, 'This is an article', 'a' * 350) }
 
     it "retrieves an article's votes" do
       vote1 = user2.votes.create!(article_id: article.id)
@@ -55,36 +50,27 @@ RSpec.describe Article, type: :model do
     end
   end
 
-  context 'latest_in_categories scope' do
-    let(:user) { User.create!(name: 'Francis') }
-    let(:categories) { %w[One Two Three].each_with_index.map { |n, i| Category.create!(name: n, priority: i) } }
-
-    it 'retrieves the latest article from each category' do
-      categories.map do |category|
-        category.articles.create!(author_id: user.id, title: 'This is an article', text: 'a' * 350,
-                                  image: 'http://localhost').id
-      end
-      ids2 = categories.map do |category|
-        category.articles.create!(author_id: user.id, title: 'This is an article', text: 'a' * 350,
-                                  image: 'http://localhost').id
-      end
-      expect(Article.latest_in_categories.map(&:id)).to eq(ids2)
-    end
-  end
-
   context 'most_voted_article scope' do
     let(:users) { %w[Francis Okwudili Obetta].map { |name| User.create!(name: name) } }
     let(:category) { Category.create!(name: 'Lifestyle', priority: 1) }
 
     it 'retrieves the article that has most votes' do
-      articles = 3.times.map do
-        category.articles.create!(author_id: users[0].id, title: 'This is a title', text: 'a' * 350,
-                                  image: 'http://localhost')
-      end
+      articles = 3.times.map { create_article(users[0], category) }
       articles.each { |article| article.votes.create!(user_id: users[1].id) }
       articles[1].votes.create!(user_id: users[2].id)
 
       expect(Article.most_voted.last).to eq(articles[1])
     end
   end
+end
+
+def create_article(author, category, title = 'This is an Article', text = nil)
+  text = 'a' * 300 if text.nil?
+  article = author.articles.create!(title: title, text: text, image: 'test.png')
+  ArticleCategory.create!(article_id: article.id, category_id: category.id)
+  article
+end
+
+def article_ms_new_article(author_id, title, text, image)
+  Article.new(author_id: author_id, title: title, text: text, image: image)
 end

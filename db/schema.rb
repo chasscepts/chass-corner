@@ -10,22 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_073419) do
+ActiveRecord::Schema.define(version: 2021_05_14_130912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "article_categories", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_categories_on_article_id"
+    t.index ["category_id"], name: "index_article_categories_on_category_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.bigint "author_id", null: false
     t.string "title"
-    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "text"
     t.integer "votes_count", default: 0
     t.string "image"
     t.index ["author_id"], name: "index_articles_on_author_id"
-    t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["votes_count"], name: "index_articles_on_votes_count"
   end
 
@@ -59,7 +66,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_073419) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "articles", "categories"
+  add_foreign_key "article_categories", "articles"
+  add_foreign_key "article_categories", "categories"
   add_foreign_key "articles", "users", column: "author_id"
   add_foreign_key "votes", "articles"
   add_foreign_key "votes", "users"

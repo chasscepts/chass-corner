@@ -6,7 +6,7 @@ RSpec.describe Vote, type: :model do
     let(:user2) { User.create(name: 'Charles') }
     let(:category) { Category.create(name: 'Category', priority: 1) }
     let(:article) do
-      user1.articles.create(category_id: category.id, title: 'This is an Article', text: 'a' * 350,
+      user1.articles.create(title: 'This is an Article', text: 'a' * 350,
                             image: 'http://localhost')
     end
 

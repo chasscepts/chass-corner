@@ -23,7 +23,10 @@
             <%= form_with model: @article, id: 'new_article_form' do |f| %>
               <%= f.hidden_field :image %>
               <div>
-                <%= f.collection_select :category_id, @categories, :id, :name %>
+                <div class="category-checkboxes-list-header">Please Check All Applicable Categories</div>
+                <div class="category-checkboxes-list">
+                  <%= category_checkboxes(@categories, f) %>
+                </div>
               </div>
               <div>
                 <%= f.text_field :title, required: true, minlength: 10, placeholder: 'Enter Article Title' %>
