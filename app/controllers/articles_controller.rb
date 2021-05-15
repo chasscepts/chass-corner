@@ -11,9 +11,10 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params)
     categories_ids = categories_list
     if categories_ids.size.zero?
-      Flash.now[:notice] = 'Please select at least one category'
+      flash.now[:alert] = 'Please select at least one category'
       @categories = Category.all
       render :new
+      return
     end
     if @article.save
       categories_ids.each { |category_id| ArticleCategory.create(article_id: @article.id, category_id: category_id) }
