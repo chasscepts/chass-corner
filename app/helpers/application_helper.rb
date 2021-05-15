@@ -3,6 +3,11 @@ module ApplicationHelper
     Category.all
   end
 
+  def content_for_head
+    return unless content_for?(:head)
+    yield
+  end
+
   def article_summary(article)
     "#{article.text[0...80]} ..." unless article.nil?
   end
