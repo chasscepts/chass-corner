@@ -1,0 +1,147 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import './colors';
+
+.article-page-center {
+  max-width: 600px;
+  margin: auto;
+
+  .heading {
+    display: inline-block;
+    margin: 0;
+    background-color: $color-secondary;
+    color: $color-light;
+    padding: 5px 10px;
+    border-bottom: 1px dotted $color-faint;
+  }
+
+  .step-info {
+    color: $color-light;
+    background-color: $color-secondary;
+    text-align: center;
+    font-size: 18px;
+    padding: 20px;
+    margin: 0 0 25px;
+  }
+
+  .upload-btn-wrap {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+
+    .image-upload-preview {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border: 1px solid $color-secondary-light;
+
+      & > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-light;
+      }
+
+      .preview-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.article-form-file-upload-selector {
+  .file-upload-wrapper {
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .file-input-label {
+      position: relative;
+      width: 100%;
+      padding: 20px;
+      border: 2px dashed #000;
+      border-radius: 5px;
+      margin-bottom: 25px;
+      text-align: center;
+      overflow: hidden;
+      cursor: pointer;
+
+      &.highlight {
+        border-color: $color-secondary;
+      }
+    }
+  }
+
+  .article-form-wrapper {
+    display: block;
+  }
+
+  &.image-upload {
+    .file-upload-wrapper {
+      display: flex;
+    }
+
+    .article-form-wrapper {
+      display: none;
+    }
+  }
+}
+
+.article-text {
+  resize: none;
+  height: 250px;
+}
+
+.article-page {
+  width: 100%;
+
+  .article-poster {
+    max-height: 300px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: 740px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+
+    &.article-full-text {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      line-height: 1.8;
+    }
+  }
+}
+
+.category-checkboxes-list {
+  display: flex;
+
+  .category-checkbox-wrap {
+    flex: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+
+    label {
+      margin-left: 3px;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.category-checkboxes-list-header {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}

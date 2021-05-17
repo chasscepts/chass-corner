@@ -1,0 +1,6 @@
+<%= form_with url: url do |f| %>
+  <%= f.text_field :name, placeholder: 'Enter Username' %>
+  <div class="mt-15px d-flex justify-content-end">
+    <%= f.submit submit_label, class: "btn btn-primary" %>
+  </div>
+<% end %>

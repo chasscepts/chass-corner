@@ -1,0 +1,47 @@
+<div id="new-article-page" class="bg-light page-screen-min pt-40px pm-15px">
+  <div class="article-page-center">
+    <h2 class="heading">Create New Article</h2>
+    <h3 id="step-info" class="step-info">Step 1 of 2</h3>
+    <div id="article-upload-wrapper" class="article-form-file-upload-selector image-upload">
+      <div class="file-upload-wrapper">
+        <label id="file-input-label" class="file-input-label">
+          <b>Drag And Drop Or Click To Upload Poster Image</b><br><br>
+          <b class="text-danger">Image must NOT be greater than 500KB</b><br><br>
+          <span id="file-name">No File Selected</span>
+          <input type="file" accept="image/png,image/jpeg" id="image-file-input" class="clip">
+        </label>
+        <div class="upload-btn-wrap">
+          <div id="preview-wrap" class="image-upload-preview mr-10px">
+            <div class="preview-text"><span>Preview</span></div>
+          </div>
+          <button id="image-upload-btn" class="btn btn-primary text-bold">Upload Image</button>
+        </div>
+      </div>
+      <div class="article-form-wrapper">
+        <div>
+          <div class="form-wrap">
+            <%= form_with model: @article, id: 'new_article_form' do |f| %>
+              <%= f.hidden_field :image %>
+              <div>
+                <div class="category-checkboxes-list-header">Please Check All Applicable Categories</div>
+                <div class="category-checkboxes-list">
+                  <%= category_checkboxes(@categories, f) %>
+                </div>
+              </div>
+              <div>
+                <%= f.text_field :title, required: true, minlength: 10, placeholder: 'Enter Article Title' %>
+              </div>
+              <div>
+                <%= f.text_area :text, required: true, minlength: 300, placeholder: 'Content ...', class: 'article-text' %>
+              </div>
+              <div class="d-flex justify-content-end">
+                <%= f.submit 'Submit Article', class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render 'loader', id: 'image-upload-loader' %>
+</div>

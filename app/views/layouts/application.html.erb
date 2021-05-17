@@ -2,15 +2,25 @@
 <html>
   <head>
     <title>ChassCorner</title>
+    <%= favicon_link_tag 'corner_logo.png' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= content_for_head { yield :head } %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <%= render 'navbar' %>
+      <main class="page-main">
+        <div class="d-flex flex-direction-column h-100">
+          <%= render_notifications(notice, alert) %>
+          <div class="flex-1"><%= yield %></div>
+        </div>
+      </main>
+      <%= render 'footer' %>
+    </div>
   </body>
 </html>
