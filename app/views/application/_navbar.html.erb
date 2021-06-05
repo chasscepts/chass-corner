@@ -1,0 +1,8 @@
+<header class="page-header d-flex justify-content-space-between align-items-center">
+  <%= link_to image_tag('corner_logo.png', class: "logo"), root_path %>
+  <div class="menu-links">
+    <%= home_menu_link current_page %>
+    <%= menu_links current_page %>
+  </div>
+  <%= user_action_links current_user, current_page %>
+</header>

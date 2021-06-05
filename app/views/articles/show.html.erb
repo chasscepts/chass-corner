@@ -1,0 +1,35 @@
+<% content_for :head do %>
+  <title><%= @article.title %></title>
+  <meta property="og:url" content="<%= article_url(@article) %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<%= @article.title %>" />
+  <meta property="og:description"   content="<%= article_summary(@article) %>" />
+  <meta property="og:image" content="<%= @article.image %>" />
+<% end %>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0&appId=1807344599282760&autoLogAppEvents=1" nonce="dZhLt95B"></script>
+<div class="article-page bg-light page-screen-min pb-15px">
+  <%= image_tag(@article.image, class: 'article-poster w-100') %>
+  <div class="article-full-text content"><%=  @article.text %></div>
+  <div class="article-footer content">
+    <div class="full-article-author mb-10px"><b>Written By: </b><%= @article.author.name %></div>
+    <div class="full-article-category mb-10px"><b>Submitted In Category: </b><%= categories_list(@article) %></div>
+    <div class="full-article-votes mb-10px"><b>Total Votes: </b><%= @article.votes_count%></div>
+    <div class="media_links">
+      <%= vote_link(@article, current_user) %>
+      <div class="media-link-wrap">
+        <div class="fb-share-button" data-href="<%= article_url(@article) %>" data-layout="button_count" data-size="small">
+          <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+            Share
+          </a>
+        </div>
+      </div>
+      <div class="media-link-wrap">
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="small" data-text="<%= article_summary @article %>" data-via="chasscepts" data-show-count="false">
+          Tweet
+        </a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
