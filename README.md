@@ -2,7 +2,7 @@
 
 # Chass Corner
 
-> An Exclusive Desktop Blog App. Registered users can contribute articles on a range of topics and can also read and vote for other users' articles.
+>A lifestyle blog where we discuss sports, politics, entertainment, family, and just about anything. You can contribute articles, read articles, and vote for your favorite articles. Just drop by 'The Corner' anytime, You will definitely find something there that will interest you.
 
 ![screenshot](./app/assets/images/app_screenshot.png)
 
