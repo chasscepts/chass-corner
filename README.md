@@ -2,7 +2,7 @@
 
 # Chass Corner
 
->A lifestyle blog where we discuss sports, politics, entertainment, family, and just about anything. You can contribute articles, read articles, and vote for your favorite articles. Just drop by 'The Corner' anytime, You will definitely find something there that will interest you.
+> Chass corner is an exclusive lifestyle blog where we discuss sports, politics, entertainment, family, and just about anything else. As a registered member of chass corner, You can contribute articles, read articles, and vote for your favorites. Just drop by 'The Corner' anytime, and You will find something there that will interest you.
 
 ![screenshot](./app/assets/images/app_screenshot.png)
 
@@ -25,19 +25,12 @@
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy of the project up and running, follow these simple steps.
 
-### Clone the project from it's github repo.
-
-```
-
+```bash
+  # clone repository and cd into its directory
+  
   $ git clone https://github.com/chasscepts/chass-corner.git
-
-```
-
-### cd into the project directory
-
-```
   $ cd chass-corner
 
   # install gems
